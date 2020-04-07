@@ -5,20 +5,17 @@ using UnityEngine;
 public class BD_PDU : BaseDevice
 {
     public State state { get; private set; }
+
+    public override string[] _ports => new string[] { 
+        TransmissionType.Power.ToString()+"In",
+        TransmissionType.Power.ToString()+"Out1",
+        TransmissionType.Power.ToString()+"Out2",
+        TransmissionType.Power.ToString()+"Out3",
+        TransmissionType.Power.ToString()+"Out4",
+        TransmissionType.Power.ToString()+"Out5",
+        TransmissionType.Power.ToString()+"Out6",
+    };
     
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void TurnOff()
     { 
     
@@ -37,6 +34,10 @@ public class BD_PDU : BaseDevice
         throw new System.NotImplementedException();
     }
 
+    protected override void TransmissionReceived(object SenderBaseDevice, TransmissionArgs TransmissionArgs)
+    {
+        throw new System.NotImplementedException();
+    }
 
     public enum State { Off, On}
 }

@@ -1,20 +1,9 @@
 ﻿using UnityEngine;
 
-public class BDC_Switch2Way : BaseDeviceComponent
+public class BDC_Switch2Way : BDC_Switch
 {
-    Animator animator => GetComponentInChildren<Animator>();
+    
     public State state { get; private set; }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void SetPositionUp()
     {

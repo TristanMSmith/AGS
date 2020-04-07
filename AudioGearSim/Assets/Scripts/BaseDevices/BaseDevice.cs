@@ -1,14 +1,32 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using AGS;
+
 
 public abstract class BaseDevice : MonoBehaviour, ISimState
 {
     public string fullName => GetFullName();
-    protected bool hasPower = false;
-    public abstract void HandleBaseDeviceComponentMessage(BaseDeviceComponent baseDeviceComponent);
+    public abstract string[] _ports { get; }
+    public Dictionary<string, string> ports { get; } = new Dictionary<string, string>();
+    public event EventHandler<TransmissionArgs> TransmissionsReceived;
+    public abstract void HandleBaseDeviceComponentMessage(BaseDeviceComponent BaseDeviceComponent);
     public abstract void HandlePortConnectionMessage();
 
+    public void Start()
+    {
+        PopulateDictionary();
+        TransmissionsReceived += TransmissionReceived;
+    }
+    void PopulateDictionary()
+    {
+        MessageHandler.BaseDeviceLookup.Add(GetFullName(), this);
+        foreach (string port in _ports)
+        {
+            ports.Add(port, port);
+        }
+    }
+    protected abstract void TransmissionReceived(object SenderBaseDevice, TransmissionArgs TransmissionArgs);
     public string GetFullName()
     {
         if (gameObject == null)
@@ -44,5 +62,8 @@ public abstract class BaseDevice : MonoBehaviour, ISimState
         }
         return result;
     }
-
+    public void TransmissionReceivedEvent(TransmissionProtocol Data)
+    {
+        TransmissionsReceived?.Invoke(this, new TransmissionArgs(Data));
+    }
 }

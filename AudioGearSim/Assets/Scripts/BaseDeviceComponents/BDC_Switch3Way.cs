@@ -2,17 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BDC_Switch3Way : MonoBehaviour
+public class BDC_Switch3Way : BDC_Switch
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public State state { get; private set; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public enum State { FirstPosition, SecondPosition, ThirdPosition }
 }

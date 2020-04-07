@@ -10,6 +10,12 @@ public class GA_ValveSpecial : BD_GuitarAmp
     public BDC_LED LED_Power;
     public BDC_Speaker Speaker;
     float gain, treble, middle, bass, reverbLevel, masterVolume;
+
+    public override string[] _ports => new string[] { 
+        TransmissionType.Power.ToString()+"In",
+        TransmissionType.MonoBalanced.ToString()+"In",
+    };
+
     void UpdateLEDS()
     {
         switch (state)
@@ -50,7 +56,7 @@ public class GA_ValveSpecial : BD_GuitarAmp
     {
         if (MasterVolume == dial)
         {
-            Speaker.GetComponent<AudioSource>().volume = (dial.transform.rotation.x - dial.minRotation) / (dial.maxRotation - dial.minRotation);
+            Speaker.GetComponent<AudioSource>().volume = dial.value;
         }
     }
     public override void HandleBaseDeviceComponentMessage(BaseDeviceComponent baseDeviceComponent)
@@ -70,6 +76,12 @@ public class GA_ValveSpecial : BD_GuitarAmp
     {
         throw new System.NotImplementedException();
     }
+
+    protected override void TransmissionReceived(object SenderBaseDevice, TransmissionArgs TransmissionArgs)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public enum State { Off, Standby, On }
     enum DSPOption { Delay, Chorus, Flanger }
 }

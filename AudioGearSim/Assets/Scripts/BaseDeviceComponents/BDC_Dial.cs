@@ -2,33 +2,18 @@
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Collider))]
-public class BDC_Dial : BaseDeviceComponent
+public abstract class BDC_Dial : BaseDeviceComponent, IDragHandler, IEndDragHandler, IBeginDragHandler
 {
-    public float minRotation, maxRotation;
-    public float speed = 20;
-    public int value { get; private set; }
-    public void Start()
+    public float value { get; protected set; }
+    protected float rotation;
+    protected Vector2 prePosition, postPosition;
+
+    public virtual void OnBeginDrag(PointerEventData eventData) 
     {
-        if (Camera.main.GetComponent<PhysicsRaycaster>() == null)
-        {
-            Debug.Log("Camera doesn't have a physics raycaster.");
-        }
-
-        transform.eulerAngles = new Vector3(minRotation, transform.eulerAngles.y, transform.eulerAngles.z);
+        prePosition = eventData.position;
     }
-    void OnMouseDrag()
-    {
-        float rotY = Input.GetAxis("Mouse Y") * speed * Mathf.Deg2Rad;
-        transform.RotateAround(Vector3.forward, rotY);
 
-        if (transform.eulerAngles.x < minRotation)
-        {
-            transform.eulerAngles = new Vector3(minRotation, transform.eulerAngles.y, transform.eulerAngles.z);
-        }
+    public abstract void OnDrag(PointerEventData eventData);
 
-        if (transform.eulerAngles.x > maxRotation)
-        {
-            transform.eulerAngles = new Vector3(maxRotation, transform.eulerAngles.y, transform.eulerAngles.z);
-        }
-    }
+    public abstract void OnEndDrag(PointerEventData eventData);
 }
