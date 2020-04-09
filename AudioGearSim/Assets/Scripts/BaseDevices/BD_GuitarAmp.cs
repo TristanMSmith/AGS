@@ -4,4 +4,5 @@ using UnityEngine;
 
 public abstract class BD_GuitarAmp : BaseDevice
 {
+    
 }

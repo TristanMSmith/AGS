@@ -58,14 +58,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4715752221480716987}
-  m_LocalRotation: {x: 0.579228, y: -0.4055798, z: -0.4055798, w: 0.579228}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4716649104884437204}
   m_Father: {fileID: 3441016257336965549}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 20, y: -90, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
 --- !u!33 &927894823343559577
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -138,9 +138,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da08fa6a6f6caa4a8e696171fb4d916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationalPlane: {x: 1, y: 0, z: 0}
-  minimumRotation: 20
-  maximumRotation: 340
+  rotationalPlane: {x: 0, y: 1, z: 0}
+  initialRotation: 0
+  resetRotation: 0
+  minimumRotation: 0
+  maximumRotation: 0
 --- !u!1 &6007120631385985184
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +154,6 @@ GameObject:
   - component: {fileID: 4716649104884437204}
   - component: {fileID: 4975489551105515251}
   - component: {fileID: 5469500886411534347}
-  - component: {fileID: 9187326900372242553}
   m_Layer: 0
   m_Name: Point
   m_TagString: Untagged
@@ -220,17 +221,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &9187326900372242553
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6007120631385985184}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
