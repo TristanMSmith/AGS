@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3441016257336965549}
   m_Layer: 0
-  m_Name: Dial
+  m_Name: EpiphoneValveSpecial_DL_MultiPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,9 +43,9 @@ GameObject:
   - component: {fileID: 927894823343559577}
   - component: {fileID: 5299621914818933386}
   - component: {fileID: 295886932656272729}
-  - component: {fileID: 898026284263436314}
+  - component: {fileID: 1234533205243813611}
   m_Layer: 0
-  m_Name: Face
+  m_Name: DL_MultiPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,7 +126,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &898026284263436314
+--- !u!114 &1234533205243813611
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,12 +135,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4715752221480716987}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f085d5bfab16414c98a7c8c60babb12, type: 3}
+  m_Script: {fileID: 11500000, guid: 34628243f4e8227478469dc43bd68514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRotation: 0
-  maxRotation: 0
-  speed: 20
+  rotationalPlane: {x: 1, y: 0, z: 0}
+  minimumRotation: 0
+  maximumRotation: 0
+  positions: []
 --- !u!1 &6007120631385985184
 GameObject:
   m_ObjectHideFlags: 0

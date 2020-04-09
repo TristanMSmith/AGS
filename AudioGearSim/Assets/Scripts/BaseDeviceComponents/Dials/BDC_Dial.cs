@@ -4,7 +4,9 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Collider))]
 public abstract class BDC_Dial : BaseDeviceComponent, IDragHandler, IEndDragHandler, IBeginDragHandler
 {
+    public Vector3 rotationalPlane;
     public float value { get; protected set; }
+
     protected float rotation;
     protected Vector2 prePosition, postPosition;
 
@@ -13,7 +15,15 @@ public abstract class BDC_Dial : BaseDeviceComponent, IDragHandler, IEndDragHand
         prePosition = eventData.position;
     }
 
-    public abstract void OnDrag(PointerEventData eventData);
+    public virtual void OnDrag(PointerEventData eventData)
+    {
+        base.HandleInteraction();
+    }
 
-    public abstract void OnEndDrag(PointerEventData eventData);
+    public virtual void OnEndDrag(PointerEventData eventData)
+    {
+        base.HandleInteraction();
+    }
+
+
 }
