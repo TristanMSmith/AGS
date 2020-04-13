@@ -20,7 +20,7 @@ public class DL_FixedRotation : BDC_Dial
 
     }
 
-    //void OnMouseDrag()
+    //void OnMouseDrag() //somehow this works if bounding box obscures
     //{
     //    Debug.Log("Dragging");
     //}
@@ -67,8 +67,9 @@ public class DL_FixedRotation : BDC_Dial
 
     public void ResetRotation()
     {
-        transform.rotation = rotationOnStart;
-        transform.Rotate(0, resetRotation, 0);
-        rotation += resetRotation;
+        Debug.Log("We In Here");
+        //transform.rotation = new Quaternion();
+        //transform.Rotate(0, resetRotation, 0);
+        //rotation += resetRotation;
     }
 }
