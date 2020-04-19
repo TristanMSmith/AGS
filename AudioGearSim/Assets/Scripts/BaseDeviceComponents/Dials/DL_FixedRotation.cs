@@ -7,9 +7,9 @@ public class DL_FixedRotation : BDC_Dial
 {
     public float initialRotation, resetRotation, minimumRotation, maximumRotation;
 
-    public void Start()
+    new void Start()
     {
-        
+        base.Start();
         InitializeRotation();
 
         void InitializeRotation()

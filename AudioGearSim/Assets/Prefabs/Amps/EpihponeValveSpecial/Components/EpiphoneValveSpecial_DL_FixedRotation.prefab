@@ -42,8 +42,8 @@ GameObject:
   - component: {fileID: 7100977301816385574}
   - component: {fileID: 927894823343559577}
   - component: {fileID: 5299621914818933386}
-  - component: {fileID: 295886932656272729}
   - component: {fileID: 898026284263436314}
+  - component: {fileID: 4406195461146383322}
   m_Layer: 0
   m_Name: DL_FixedRotation
   m_TagString: Untagged
@@ -112,20 +112,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &295886932656272729
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4715752221480716987}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!114 &898026284263436314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,6 +129,20 @@ MonoBehaviour:
   resetRotation: 0
   minimumRotation: 0
   maximumRotation: 0
+--- !u!64 &4406195461146383322
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4715752221480716987}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &6007120631385985184
 GameObject:
   m_ObjectHideFlags: 0
