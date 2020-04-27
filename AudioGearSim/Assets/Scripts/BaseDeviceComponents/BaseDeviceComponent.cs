@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public abstract class BaseDeviceComponent : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
+public abstract class BaseDeviceComponent : MonoBehaviour, IOutline, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public BaseDevice baseDevice  => GetComponentInParent<BaseDevice>();
     public virtual void HandleInteraction()
@@ -43,5 +43,15 @@ public abstract class BaseDeviceComponent : MonoBehaviour, IPointerDownHandler, 
     protected virtual void OnDoubleClick()
     {
         Debug.Log(name + ": OnDoubleClick() called.");
+    }
+
+    public void AddOutline()
+    {
+        Outline.AddTo(this);
+    }
+
+    public void RemoveOutline()
+    {
+        Outline.RemoveFrom(this);
     }
 }

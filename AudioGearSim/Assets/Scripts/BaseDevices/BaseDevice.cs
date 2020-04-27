@@ -4,7 +4,7 @@ using UnityEngine;
 using AGS;
 
 
-public abstract class BaseDevice : MonoBehaviour, ISimState
+public abstract class BaseDevice : MonoBehaviour, ISimState, IOutline
 {
     public string fullName => GetFullName();
     public abstract string[] _ports { get; }
@@ -65,5 +65,15 @@ public abstract class BaseDevice : MonoBehaviour, ISimState
     public void TransmissionReceivedEvent(TransmissionProtocol Data)
     {
         TransmissionsReceived?.Invoke(this, new TransmissionArgs(Data));
+    }
+
+    public void AddOutline()
+    {
+        Outline.AddTo(this);
+    }
+
+    public void RemoveOutline()
+    {
+        Outline.RemoveFrom(this);
     }
 }
