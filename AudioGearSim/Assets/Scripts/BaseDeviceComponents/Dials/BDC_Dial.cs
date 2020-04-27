@@ -30,5 +30,7 @@ public abstract class BDC_Dial : BaseDeviceComponent, IDragHandler, IBeginDragHa
         base.HandleInteraction();
     }
 
+    
 
+    public enum RotationalPlane { Up, Down, Left, Right, Forward, Backword }
 }
