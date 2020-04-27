@@ -6,4 +6,8 @@ using UnityEngine;
 public abstract class BDC_Switch : BaseDeviceComponent
 {
     protected Animator animator => GetComponentInChildren<Animator>();
+    private void Start()
+    {
+        AGS.Debug.RaycasterCheck();
+    }
 }

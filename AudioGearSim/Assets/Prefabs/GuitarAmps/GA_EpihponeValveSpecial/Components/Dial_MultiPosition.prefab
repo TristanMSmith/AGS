@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 154402336595844315}
   - component: {fileID: 2974794311442195792}
   - component: {fileID: 66049652456745096}
-  - component: {fileID: 5988694164966377731}
+  - component: {fileID: 5023538217395319897}
   m_Layer: 0
-  m_Name: EpiphoneValveSpecial_DL_FixedRotation
+  m_Name: Dial_MultiPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.00730999
   m_Center: {x: -0.0000000015133992, y: 6.9849193e-10, z: 0.003187766}
---- !u!114 &5988694164966377731
+--- !u!114 &5023538217395319897
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,11 +102,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 221620055529819115}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da08fa6a6f6caa4a8e696171fb4d916, type: 3}
+  m_Script: {fileID: 11500000, guid: 34628243f4e8227478469dc43bd68514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationalPlane: {x: 0, y: 0, z: 0}
-  initialRotation: 0
-  resetRotation: 0
+  rotationalPlane: 1
   minimumRotation: 0
   maximumRotation: 0
+  positions: []

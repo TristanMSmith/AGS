@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2974794311442195792}
   - component: {fileID: 66049652456745096}
   - component: {fileID: 5988694164966377731}
+  - component: {fileID: 8633495192268927534}
   m_Layer: 0
   m_Name: Dial_FixedRotation
   m_TagString: Untagged
@@ -89,7 +90,7 @@ SphereCollider:
   m_GameObject: {fileID: 221620055529819115}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.00730999
   m_Center: {x: -0.0000000015133992, y: 6.9849193e-10, z: 0.003187766}
@@ -105,8 +106,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da08fa6a6f6caa4a8e696171fb4d916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationalPlane: {x: 0, y: 0, z: 0}
+  rotationalDirection: 0
+  rotationIsInverted: 0
   initialRotation: 0
-  resetRotation: 0
   minimumRotation: 0
   maximumRotation: 0
+--- !u!65 &8633495192268927534
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221620055529819115}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00735713, y: 0.01461998, z: 0.006427145}
+  m_Center: {x: -0.0000000015133992, y: 6.9849193e-10, z: 0.003187766}

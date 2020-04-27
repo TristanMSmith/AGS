@@ -5,17 +5,17 @@ using UnityEngine.EventSystems;
 
 public class DL_FixedRotation : BDC_Dial
 {
-    public float initialRotation, resetRotation, minimumRotation, maximumRotation;
+    public float initialRotation, minimumRotation, maximumRotation;
+    public 
 
     new void Start()
     {
         base.Start();
         InitializeRotation();
-
+        //Debug.Log(transform.localRotation.eulerAngles);
         void InitializeRotation()
         {
-            transform.Rotate(0, initialRotation, 0);
-            rotation += initialRotation;
+            SetRotation(initialRotation);
         }
 
     }
@@ -27,7 +27,7 @@ public class DL_FixedRotation : BDC_Dial
     public override void OnBeginDrag(PointerEventData eventData)
     {
         //prePosition = eventData.position;
-        Debug.Log("OnBeginDrag:2");
+        Debug.Log("OnBeginDrag");
     }
     public override void OnDrag(PointerEventData eventData)
     {
@@ -46,12 +46,7 @@ public class DL_FixedRotation : BDC_Dial
             {
                 change = eventData.delta.y;
             }
-
-            if ((minimumRotation == 0 && maximumRotation == 0 || rotation + change >= minimumRotation && rotation + change <= maximumRotation))
-            {
-                transform.Rotate(0, change, 0);
-                rotation += change;
-            }
+            SetRotation(rotation + change);
         }
     }
 
@@ -67,9 +62,28 @@ public class DL_FixedRotation : BDC_Dial
 
     public void ResetRotation()
     {
-        Debug.Log("We In Here");
-        //transform.rotation = new Quaternion();
-        //transform.Rotate(0, resetRotation, 0);
-        //rotation += resetRotation;
+        SetRotation(initialRotation);
+    }
+
+    void SetRotation(float degrees)
+    {
+        //transform.eulerAngles = new Vector3();
+        if (degrees > maximumRotation)
+        {
+            degrees = maximumRotation;
+        }
+        if (degrees < minimumRotation)
+        {
+            degrees = minimumRotation;
+        }
+
+        transform.localEulerAngles =  rotationalPlane*degrees;
+        
+        rotation = degrees;
+    }
+
+    protected override float GetValue()
+    {
+        return rotation / (maximumRotation - minimumRotation);
     }
 }

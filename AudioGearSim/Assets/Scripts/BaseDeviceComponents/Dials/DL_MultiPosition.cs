@@ -18,6 +18,11 @@ public class DL_MultiPosition : BDC_Dial
         throw new System.NotImplementedException();
     }
 
+    protected override float GetValue()
+    {
+        throw new System.NotImplementedException();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
