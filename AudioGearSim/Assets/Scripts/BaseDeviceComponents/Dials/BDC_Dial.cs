@@ -44,13 +44,13 @@ public abstract class BDC_Dial : BaseDeviceComponent, IDragHandler, IBeginDragHa
         switch (rotationalDirection)
         {
             case RotationalDirection.Forward:
-                result = transform.forward * normalize;
+                result = Vector3.forward * normalize;//1,0,0
                 break;
             case RotationalDirection.Right:
-                result = transform.right * normalize;
+                result = Vector3.right * normalize;//0,1,0
                 break;
             case RotationalDirection.Up:
-                result = transform.up * normalize;
+                result = Vector3.up * normalize;//0,0,1
                 break;
         }
         return result;
