@@ -35,7 +35,7 @@ public static class MessageHandler
         }
         catch
         {
-            Debug.LogError("File not found: PortConnections/connections.portconnections");
+            UnityEngine.Debug.LogError("File not found: PortConnections/connections.portconnections");
         }
     }
 
@@ -51,7 +51,7 @@ public static class MessageHandler
             TransmissionProtocol data;
             if (_lockFreeSendMessageQueue.TryDequeue(out data))
             {
-                Debug.Log("SendData");
+                UnityEngine.Debug.Log("SendData");
 
                 string Recipient;
 
@@ -69,7 +69,7 @@ public static class MessageHandler
                 }
                 else
                 {
-                    Debug.LogError("No connection found for " + data.SenderBaseDevice + ":" + data.SenderPort);
+                    UnityEngine.Debug.LogError("No connection found for " + data.SenderBaseDevice + ":" + data.SenderPort);
                 }
             }
 

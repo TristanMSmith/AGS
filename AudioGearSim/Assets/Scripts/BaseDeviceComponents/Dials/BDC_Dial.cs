@@ -4,16 +4,17 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Collider))]
 public abstract class BDC_Dial : BaseDeviceComponent, IDragHandler, IBeginDragHandler
 {
-    public Vector3 rotationalPlane;
-    public float value { get; protected set; }
+    public RotationalDirection rotationalDirection;
+    public bool rotationIsInverted;
+    protected Vector3 rotationalPlane => GetRotationalPlane();
+
+    public float value => GetValue();
     protected float rotation;
     protected Vector2 prePosition, postPosition;
-    //protected Vector3 rotation;
-    protected Quaternion rotationOnStart;
 
     public void Start()
     {
-        rotationOnStart = transform.rotation;
+        AGS.Debug.RaycasterCheck();
     }
     public virtual void OnBeginDrag(PointerEventData eventData) 
     {
@@ -30,5 +31,31 @@ public abstract class BDC_Dial : BaseDeviceComponent, IDragHandler, IBeginDragHa
         base.HandleInteraction();
     }
 
+    Vector3 GetRotationalPlane()
+    {
+        Vector3 result = new Vector3();
+        int normalize = 1;
 
+        if (rotationIsInverted)
+        {
+            normalize = -1;
+        }
+        
+        switch (rotationalDirection)
+        {
+            case RotationalDirection.Forward:
+                result = Vector3.forward * normalize;//1,0,0
+                break;
+            case RotationalDirection.Right:
+                result = Vector3.right * normalize;//0,1,0
+                break;
+            case RotationalDirection.Up:
+                result = Vector3.up * normalize;//0,0,1
+                break;
+        }
+        return result;
+    }
+    protected abstract float GetValue();
+
+    public enum RotationalDirection { Forward, Right, Up }
 }

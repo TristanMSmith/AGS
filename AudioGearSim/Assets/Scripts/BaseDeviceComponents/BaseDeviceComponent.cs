@@ -3,19 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public abstract class BaseDeviceComponent : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
+public abstract class BaseDeviceComponent : MonoBehaviour, IOutline, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public BaseDevice baseDevice  => GetComponentInParent<BaseDevice>();
     public virtual void HandleInteraction()
     {
-        baseDevice.HandleBaseDeviceComponentMessage(this);
+        try
+        {
+            baseDevice.HandleBaseDeviceComponentMessage(this);
+        }
+        catch 
+        {
+            Debug.LogError(name + " does not have a baseDevice in parent gameObject");
+        }
     }
 
-    public virtual void OnPointerDown(PointerEventData eventData)
+    public virtual void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.clickCount == 2)
+        switch (eventData.clickCount)
         {
-            OnDoubleClick();
+            case 1:
+                break;
+            case 2:
+                OnDoubleClick();
+                break;
         }
 }
 
@@ -40,8 +51,22 @@ public abstract class BaseDeviceComponent : MonoBehaviour, IPointerDownHandler, 
         //remove outline shader
         Debug.Log(name + ": OnPointerExit");
     }
+    protected virtual void OnClick()
+    {
+        Debug.Log(name + ": OnClick() called.");
+    }
     protected virtual void OnDoubleClick()
     {
         Debug.Log(name + ": OnDoubleClick() called.");
+    }
+
+    public void AddOutline()
+    {
+        Outline.AddTo(this);
+    }
+
+    public void RemoveOutline()
+    {
+        Outline.RemoveFrom(this);
     }
 }

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ISimState
+public interface IOutline 
 {
-    
+    void AddOutline();
+    void RemoveOutline();
 }
